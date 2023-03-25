@@ -1,0 +1,70 @@
+{% extends 'shop/layouts/main.html' %}
+{% block title %}
+Registration | ShopKart
+{% endblock title %}
+{% block content %}
+
+<div class="container my-7" style="margin-top:70px;min-height: 600px;">
+  <div class="row">
+    <div class="col-12">
+      <h1 class="mb-1">New User Registration</h1>
+      <hr style="border: color #b8b8b8; ">
+
+      {% include 'shop/inc/message.html' %}
+    </div>
+  </div>
+  <section class="py-3 my-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-6">
+          <form method="post" action="">
+            {% csrf_token %}
+            <div class="mb-4">
+              <label for="" class="form-label">User Name</label>
+              {{form.username}}
+
+            </div>
+            <div class="mb-4">
+              <label for="" class="form-label">Email Address</label>
+              {{form.email}}
+
+            </div>
+            <div class="mb-4">
+              <label for="" class="form-label">password</label>
+              {{form.password1}}
+
+            </div>
+            <div class="mb-4">
+              <label for="" class="form-label">Confirm Password</label>
+              {{form.password2}}
+
+            </div>
+            <button type="submit" class="btn btn-primary">Register</button>
+
+          </form>
+          <p class="ny-2">Already User ? <a href="{% url 'login' %}">Login Now</a> </p>
+        </div>
+        <div class="col-6">
+
+          {% if form.errors.username %}
+          <label class="text-danger d-block">{{ form.errors.usrename }}</label>
+          {% endif %}
+
+          {% if form.errors.email %}
+          <label class="text-danger d-block">{{ form.errors.email }}</label>
+          {% endif %}
+
+          {% if form.errors.password1 %}
+          <label class="text-danger d-block">{{ form.errors.password1 }}</label>
+          {% endif %}
+
+          {% if form.errors.password2 %}
+          <label class="text-danger d-block">{{ form.errors.password2 }}</label>
+          {% endif %}
+
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+{% endblock content %}
